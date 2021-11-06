@@ -1,8 +1,4 @@
-@extends('layouts.main')
-
-@section('title')
-    @parent Главная
-@endsection
+@extends('layouts.app')
 
 
 @section('content')
