@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Авторизация')
-
-@section('menu')
-    @include('menu')
-@endsection
-
 @section('content')
     <br>
     <div class="container">

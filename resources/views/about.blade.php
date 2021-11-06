@@ -1,12 +1,14 @@
-@extends('layouts.main')
-
-@section('title', 'Новости')
-
-@section('menu')
-    @include('menu')
-@endsection
+@extends('layouts.app')
 
 @section('content')
-    <h2>О сайте</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                О сайте...
+            </div>
+        </div>
+    </div>
 @endsection
+
+
 

@@ -1,16 +1,17 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
-@section('title', 'Новости')
-
-@section('menu')
-    @include('menu')
-@endsection
 
 @section('content')
-    <h2>Новости</h2>
-    @forelse($news as $item)
-        <a href="{{ route('news.one', $item['id']) }}">{{ $item['title'] }}</a><br>
-    @empty
-        <p>Нет новостей</p>
-    @endforelse
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+                <h2>Новости</h2>
+                @forelse($news as $item)
+                    <a href="{{ route('news.one', $item['id']) }}">{{ $item['title'] }}</a><br>
+                @empty
+                    <p>Нет новостей</p>
+                @endforelse
+        </div>
+    </div>
+</div>
 @endsection
