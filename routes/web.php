@@ -46,6 +46,7 @@ Route::name('admin.')
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
     });
 
+
 Route::view('/about', 'about')->name('about');
 
 Auth::routes();
