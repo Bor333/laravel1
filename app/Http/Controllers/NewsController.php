@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\News;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class NewsController extends Controller
 {
     public function index(News $news)
     {

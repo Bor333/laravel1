@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NewsController;
 
-use App\Http\Controllers\News\IndexController as NewsController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 
 use Illuminate\Support\Facades\Auth;
@@ -51,5 +52,5 @@ Route::view('/about', 'about')->name('about');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 

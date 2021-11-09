@@ -35,11 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="{{ route('home') }}">Главная</a></li>
-                    <li><a class="nav-link" href="{{ route('news.index') }}">Новости</a></li>
-                    <li><a class="nav-link" href="{{ route('news.category.index') }}">Категории</a></li>
-                    <li><a class="nav-link" href="{{ route('about') }}">О нас</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.index') }}">Админка</a></li>
+                   @yield('menu')
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -1,12 +1,19 @@
-@extends('layouts.main')
-
-@section('title', 'Новости')
+@extends('layouts.app')
 
 @section('menu')
     @include('menu')
 @endsection
 
 @section('content')
-    <h2>Тест 2</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Тест 2</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
-
