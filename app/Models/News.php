@@ -58,6 +58,7 @@ class News
     public function getNews()
     {
         //dump(\Illuminate\Support\Str::slug('Новость 12'));
+        //TODO вернуть массив новостей из файла
         return $this->news;
     }
 
