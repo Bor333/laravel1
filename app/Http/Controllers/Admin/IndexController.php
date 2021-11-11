@@ -20,11 +20,12 @@ class IndexController extends Controller
     {
         if ($request->isMethod('post')) {
             $request->flash();
-            $arr = $request->except('_token');
+            //$arr = $request->except('_token');
+            //$news = file(storage_path() . '/json.txt');
 
-            File::put(storage_path() . '/news.json', json_encode($arr, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
-            dd($arr);
+            //dd($news);
+
 
             //TODO прочитать файл новостей в массив
             //TODO добавить в массив

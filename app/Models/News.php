@@ -4,7 +4,9 @@
 namespace App\Models;
 
 
-use Psy\Util\Str;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 class News
 {
@@ -57,9 +59,9 @@ class News
 
     public function getNews()
     {
-        //dump(\Illuminate\Support\Str::slug('Новость 12'));
-        //TODO вернуть массив новостей из файла
-        return $this->news;
+        $arr = File::get(storage_path() . '/json.txt');
+        return json_decode($arr, true);
+
     }
 
     public function getNewsByCategorySlug($slug) {
