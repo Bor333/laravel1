@@ -48,6 +48,6 @@ class IndexController extends Controller
 
     public function test2()
     {
-        return response()->download('cat.jpg');
+        //return response()->download('cat.jpg');
     }
 }

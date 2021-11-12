@@ -60,6 +60,7 @@ class News
     public function getNews()
     {
         $arr = File::get(storage_path() . '/json.txt');
+
         return json_decode($arr, true);
 
     }

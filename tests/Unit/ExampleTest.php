@@ -16,7 +16,8 @@ class ExampleTest extends TestCase
     public function test_example()
     {
         $news = new News(new Categories());
-        dump($news);
-        $this->assertTrue(true);
+
+        $this->assertIsArray($news->getNews());
+        //$this->assertTrue(true);
     }
 }
