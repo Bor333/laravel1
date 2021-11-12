@@ -18,6 +18,6 @@ class ExampleTest extends TestCase
         $news = new News(new Categories());
 
         $this->assertIsArray($news->getNews());
-        //$this->assertTrue(true);
+
     }
 }

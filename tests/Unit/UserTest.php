@@ -2,17 +2,26 @@
 
 namespace Tests\Unit;
 
+use App\Models\Categories;
+use App\Models\News;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+
+    public function test_news()
     {
-        $this->assertTrue(true);
+        $news = new News(new Categories());
+
+        $this->assertIsArray($news->getNews());
+
+    }
+
+    public function test_categories()
+    {
+        $category = new Categories();
+
+        $this->assertIsArray($category->getCategories());
+
     }
 }
