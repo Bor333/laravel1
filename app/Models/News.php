@@ -33,7 +33,6 @@ class News
             'id' => 3,
             'title' => 'Новость 3',
             'text' => 'А у нас новость 3 и не она очень хорошая...',
-            'slug' => 'novost1',
             'category_id' => 2,
             'isPrivate' => false,
 
@@ -43,6 +42,21 @@ class News
             'title' => 'Новость 4',
             'text' => 'А тут у нас еще плохие новости(((',
             'category_id' => 2,
+            'isPrivate' => true,
+        ],
+        5 => [
+            'id' => 5,
+            'title' => 'Новость 5',
+            'text' => 'Тут про ковид',
+            'category_id' => 3,
+            'isPrivate' => false,
+
+        ],
+        6 => [
+            'id' => 6,
+            'title' => 'Новость 6',
+            'text' => 'И тут про ковид',
+            'category_id' => 3,
             'isPrivate' => true,
         ]
     ];
@@ -59,10 +73,8 @@ class News
 
     public function getNews()
     {
-        $arr = File::get(storage_path() . '/json.txt');
-
-        return json_decode($arr, true);
-
+        //return $this->news;
+        return json_decode(File::get(storage_path() . '/news.json'), true);
     }
 
     public function getNewsByCategorySlug($slug) {

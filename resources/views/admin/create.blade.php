@@ -18,7 +18,7 @@
                                 <input type="text" name="title" id="newsTitle" class="form-control" value="{{ old('title') }}">
 
                                 <label for="NewsCategory">Категория новости</label>
-                                <select name="category" id="newsCategory" class="form-control">
+                                <select name="category_id" id="newsCategory" class="form-control">
                                     @foreach($categories as $item)
                                         <option
                                             @if ($item['id'] == old('category')) selected @endif

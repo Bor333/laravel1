@@ -16,22 +16,24 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
-    public function create(Request $request, Categories $categories)
+    public function create(Request $request, Categories $categories, News $news)
     {
         if ($request->isMethod('post')) {
             $request->flash();
-            //$arr = $request->except('_token');
-            //$news = file(storage_path() . '/json.txt');
+            $arr = $request->except('_token');
 
+            $data = $news->getNews();
 
-            //dd($news);
+            $data[] = $arr;
 
+            $id = array_key_last($data);
 
-            //TODO прочитать файл новостей в массив
-            //TODO добавить в массив
-            //TODO сохранить новую новость в файл в json
+            $data[$id]['id'] = $id;
+            $data[$id]['isPrivate'] = isset($arr['isPrivate']);
 
-            return redirect()->route('admin.create');
+            File::put(storage_path() . '/news.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+            return redirect()->route('news.show', $id)->with('success');
         }
 
         return view('admin.create', [

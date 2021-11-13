@@ -1,6 +1,59 @@
 {
-    "title": "q",
-    "category": "1",
-    "text": "q",
-    "isPrivate": "1"
+    "1": {
+        "id": 1,
+        "title": "Новость 11",
+        "text": "А у нас новость 1 и она очень хорошая!",
+        "slug": "novost1",
+        "category_id": 1,
+        "isPrivate": false
+    },
+    "2": {
+        "id": 2,
+        "title": "Новость 2",
+        "text": "А тут у нас плохие новости(((",
+        "category_id": 1,
+        "isPrivate": true
+    },
+    "3": {
+        "id": 3,
+        "title": "Новость 3",
+        "text": "А у нас новость 3 и не она очень хорошая...",
+        "category_id": 2,
+        "isPrivate": false
+    },
+    "4": {
+        "id": 4,
+        "title": "Новость 4",
+        "text": "А тут у нас еще плохие новости(((",
+        "category_id": 2,
+        "isPrivate": true
+    },
+    "5": {
+        "id": 5,
+        "title": "Новость 5",
+        "text": "Тут про ковид",
+        "category_id": 3,
+        "isPrivate": false
+    },
+    "6": {
+        "id": 6,
+        "title": "Новость 6",
+        "text": "И тут про ковид",
+        "category_id": 3,
+        "isPrivate": true
+    },
+    "7": {
+        "title": "Новость 7",
+        "category_id": "3",
+        "text": "Новая новость",
+        "id": 7,
+        "isPrivate": false
+    },
+    "8": {
+        "title": "Новость 8",
+        "category_id": "1",
+        "text": "еще новая новость",
+        "isPrivate": true,
+        "id": 8
+    }
 }
