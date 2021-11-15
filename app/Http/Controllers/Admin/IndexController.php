@@ -8,6 +8,7 @@ use App\Models\News;
 use Faker\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class IndexController extends Controller
 {
@@ -22,6 +23,12 @@ class IndexController extends Controller
             $request->flash();
             $arr = $request->except('_token');
 
+            $url = null;
+            if ($request->file('image')) {
+                $path = Storage::putFile('public/img', $request->file('image'));
+                $url = Storage::url($path);
+            }
+
             $data = $news->getNews();
 
             $data[] = $arr;
@@ -30,6 +37,7 @@ class IndexController extends Controller
 
             $data[$id]['id'] = $id;
             $data[$id]['isPrivate'] = isset($arr['isPrivate']);
+            $data[$id]['image'] = $url;
 
             File::put(storage_path() . '/news.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
