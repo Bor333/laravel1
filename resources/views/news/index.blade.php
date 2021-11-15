@@ -12,8 +12,8 @@
                     <div class="card-body">
                         <h1>Новости</h1>
                         @forelse($news as $item)
-                            <a href="{{ route('news.show', $item['id']) }}">{{ $item['title'] }}</a><br>
-                            <div class="card-img" style="background-image: url({{ $item['image'] ?? asset('storage/img/default.jpeg')}})"></div>
+                            <a href="{{ route('news.show', $item->id) }}">{{ $item->title }}</a><br>
+                            <div class="card-img" style="background-image: url({{ $item->image ?? asset('storage/img/default.jpeg')}})"></div>
                         @empty
                             <p>Нет новостей</p>
                         @endforelse

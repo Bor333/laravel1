@@ -9,6 +9,7 @@ use Faker\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -28,7 +29,7 @@ class IndexController extends Controller
                 $path = Storage::putFile('public/img', $request->file('image'));
                 $url = Storage::url($path);
             }
-
+            //DB::insert([]);
             $data = $news->getNews();
 
             $data[] = $arr;
