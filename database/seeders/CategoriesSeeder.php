@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker;
-
+//TODO спросить откуда берется Faker
 class CategoriesSeeder extends Seeder
 {
     /**

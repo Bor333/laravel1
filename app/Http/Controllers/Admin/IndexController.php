@@ -23,13 +23,22 @@ class IndexController extends Controller
         if ($request->isMethod('post')) {
             $request->flash();
             $arr = $request->except('_token');
-
+            //dd($request->all() );
             $url = null;
+
             if ($request->file('image')) {
                 $path = Storage::putFile('public/img', $request->file('image'));
                 $url = Storage::url($path);
             }
+
+            DB::table('news')->insert([
+                'title' => $request->get('title'),
+                'text' => $request->get('text'),
+                'isPrivate' => $request->has('isPrivate'),
+            ]);
+
             //DB::insert([]);
+            /*
             $data = $news->getNews();
 
             $data[] = $arr;
@@ -43,6 +52,7 @@ class IndexController extends Controller
             File::put(storage_path() . '/news.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
             return redirect()->route('news.show', $id)->with('success');
+            */
         }
 
         return view('admin.create', [
