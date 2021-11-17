@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker;
+
 //TODO спросить откуда берется Faker
 class CategoriesSeeder extends Seeder
 {
@@ -19,15 +20,23 @@ class CategoriesSeeder extends Seeder
 
     }
 
-    private  function getData() {
-        $data = [];
-        $faker = Faker\Factory::create('ru_RU');
-        for ($i = 0; $i <= 10; $i++) {
-            $data[] = [
-                'title' => $faker->realText(10),
-                'slug' => $faker->realText(10),
-            ];
-        }
+    private function getData()
+    {
+        $data = [
+            [
+                'title' => 'Спорт',
+                'slug' => 'sport',
+            ],
+            [
+                'title' => 'Политика',
+                'slug' => 'politics',
+            ],
+            [
+                'title' => 'Covid19',
+                'slug' => 'covid',
+            ],
+        ];
+
         return $data;
     }
 }

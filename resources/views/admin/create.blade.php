@@ -15,7 +15,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="newTitle">Заголовок новости</label>
-                                <input type="text" name="title" id="newsTitle" class="form-control" value="{{ old('title') }}">
+                                <input type="text" name="title" id="newsTitle" class="form-control" required="required" value="{{ old('title') }}">
 
                                 <label for="NewsCategory">Категория новости</label>
                                 <select name="category_id" id="newsCategory" class="form-control">
@@ -29,7 +29,7 @@
 
 
                                 <label for="NewsText">Текст новости</label>
-                                <textarea name="text" id="newsText" class="form-control">{{ old('text') }}</textarea>
+                                <textarea name="text" id="newsText" class="form-control" required="required">{{ old('text') }}</textarea>
                                 <div class="form-check">
 
                                     <input

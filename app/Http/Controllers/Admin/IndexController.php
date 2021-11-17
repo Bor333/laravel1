@@ -23,7 +23,7 @@ class IndexController extends Controller
         if ($request->isMethod('post')) {
             $request->flash();
             $arr = $request->except('_token');
-            //dd($request->all() );
+
             $url = null;
 
             if ($request->file('image')) {
@@ -35,24 +35,10 @@ class IndexController extends Controller
                 'title' => $request->get('title'),
                 'text' => $request->get('text'),
                 'isPrivate' => $request->has('isPrivate'),
+                'image' => $url,
             ]);
 
-            //DB::insert([]);
-            /*
-            $data = $news->getNews();
-
-            $data[] = $arr;
-
-            $id = array_key_last($data);
-
-            $data[$id]['id'] = $id;
-            $data[$id]['isPrivate'] = isset($arr['isPrivate']);
-            $data[$id]['image'] = $url;
-
-            File::put(storage_path() . '/news.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
-            return redirect()->route('news.show', $id)->with('success');
-            */
+            return redirect()->route('news.show', DB::table('news')->orderBy('id', 'desc')->first('id')->id)->with('success', 'Новость добавлена');
         }
 
         return view('admin.create', [
@@ -70,5 +56,6 @@ class IndexController extends Controller
     public function test2()
     {
         //return response()->download('cat.jpg');
+        return response()->download('storage/img/default.jpeg');
     }
 }
