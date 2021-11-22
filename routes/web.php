@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
 
@@ -45,7 +46,7 @@ Route::name('admin.')
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-        Route::match(['get', 'post'], '/create', [AdminController::class, 'create'])->name('create');
+        Route::match(['get', 'post'], '/create', [AdminNewsController::class, 'create'])->name('create');
     });
 
 
