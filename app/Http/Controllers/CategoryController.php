@@ -20,11 +20,11 @@ class CategoryController extends Controller
     {
         $category = Category::query()->where('slug', $slug)->first();
 
-        $news = News::query()->where('category_id', $category->id)->get();
+       // $news = News::query()->where('category_id', $category->id)->get();
 
         return view('news.category', [
             'category' => $category->title,
-            'news' =>  $news
+            'news' =>  $category->news
         ]);
     }
 }

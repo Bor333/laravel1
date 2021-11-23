@@ -46,11 +46,13 @@ Route::name('admin.')
         Route::get('/', [AdminNewsController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-        Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news.create');
+        Route::resource('/news',AdminNewsController::class)->except('show');
+ /*       Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news.create');
         Route::get('/news/{news}/edit', [AdminNewsController::class, 'edit'])->name('news.edit');
         Route::post('/news', [AdminNewsController::class, 'store'])->name('news.store');
         Route::put('/news/{news}', [AdminNewsController::class, 'update'])->name('news.update');
         Route::delete('/news/{news}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
+ */
     });
 
 
