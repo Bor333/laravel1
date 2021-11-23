@@ -3,7 +3,7 @@
 @section('menu')
     @include('admin.menu')
 @endsection
-
+@dump($news)
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="POST" action="{{ route('admin.create') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.news.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="newTitle">Заголовок новости</label>

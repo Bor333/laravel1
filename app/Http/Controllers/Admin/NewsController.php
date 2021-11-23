@@ -15,32 +15,44 @@ class NewsController extends Controller
     {
         return view('admin.index', [
             'news' => News::all()
-        ] );
+        ]);
     }
 
     public function create(Request $request)
     {
-        if ($request->isMethod('post')) {
-            $request->flash();
-
-
-            $url = null;
-
-            if ($request->file('image')) {
-                $path = Storage::putFile('public/img', $request->file('image'));
-                $url = Storage::url($path);
-            }
-
-            $news = new News();
-            $news->image = $url;
-            $news->fill($request->all())->save();
-
-            return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
-        }
-
         return view('admin.create', [
             'categories' => []
         ]);
+    }
 
+    public function store(Request $request, News $news)
+    {
+        $request->flash();
+
+        $url = null;
+
+        if ($request->file('image')) {
+            $path = Storage::putFile('public/img', $request->file('image'));
+            $url = Storage::url($path);
+        }
+
+        $news->image = $url;
+        $news->fill($request->all())->save();
+
+        return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
+    }
+
+    public function destroy(News $news)
+    {
+        $news->delete();
+        return redirect()->route('admin.index')->with('success', 'Новость удалена');
+    }
+
+    public function edit(News $news)
+    {
+        return view('admin.create', [
+            'news' => $news,
+            'categories' => []
+        ]);
     }
 }
