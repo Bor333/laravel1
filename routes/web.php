@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
-
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +47,7 @@ Route::name('admin.')
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
         Route::resource('/news',AdminNewsController::class)->except('show');
+        Route::resource('/categories', AdminCategoryController::class)->except('show');
  /*       Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news.create');
         Route::get('/news/{news}/edit', [AdminNewsController::class, 'edit'])->name('news.edit');
         Route::post('/news', [AdminNewsController::class, 'store'])->name('news.store');
