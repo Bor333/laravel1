@@ -25,6 +25,7 @@ class NewsSeeder extends Seeder
         $faker = Faker\Factory::create('ru_RU');
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
+
                 'title' => $faker->realText(10),
                 'text' => $faker->realText(rand(200, 700)),
                 'isPrivate' => false,

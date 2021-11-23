@@ -18,9 +18,10 @@ class NewsController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(News $news)
     {
         return view('admin.create', [
+            'news' => $news,
             'categories' => []
         ]);
     }
@@ -40,6 +41,23 @@ class NewsController extends Controller
         $news->fill($request->all())->save();
 
         return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
+    }
+
+    public function update(Request $request, News $news)
+    {
+        $request->flash();
+
+        $url = null;
+
+        if ($request->file('image')) {
+            $path = Storage::putFile('public/img', $request->file('image'));
+            $url = Storage::url($path);
+        }
+
+        $news->image = $url;
+        $news->fill($request->all())->save();
+
+        return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
     }
 
     public function destroy(News $news)

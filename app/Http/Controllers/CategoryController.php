@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+
+use App\Models\Category;
 use App\Models\News;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class CategoryController extends Controller
 {
-    public function index(Categories $categories)
+    public function index()
     {
-        $categories = DB::table('categories')->get();
-        return view('news.categories')->with('categories', $categories);
+        return view('news.categories', [
+            'categories' => Category::all()
+        ]);
     }
 
-    public function show(News $news, Categories $categories, $slug)
+    public function show($slug)
     {
-        $category = DB::table('categories')->find($slug);
-        return view('news.category')->with('category',$category);
+        $category = Category::query()->where('slug', $slug)->first();
+
+        $news = News::query()->where('category_id', $category->id)->get();
+
+        return view('news.category', [
+            'category' => $category->title,
+            'news' =>  $news
+        ]);
     }
 }

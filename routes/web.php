@@ -49,6 +49,7 @@ Route::name('admin.')
         Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news.create');
         Route::get('/news/{news}/edit', [AdminNewsController::class, 'edit'])->name('news.edit');
         Route::post('/news', [AdminNewsController::class, 'store'])->name('news.store');
+        Route::put('/news/{news}', [AdminNewsController::class, 'update'])->name('news.update');
         Route::delete('/news/{news}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
     });
 
