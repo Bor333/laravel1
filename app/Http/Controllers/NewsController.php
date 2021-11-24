@@ -11,7 +11,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = DB::table('news')->get();
+        //$news = DB::table('news')->get();
 
         //$news = News::all();
         //$news = News::simplePaginate(5);

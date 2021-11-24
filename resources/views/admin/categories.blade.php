@@ -10,7 +10,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h2>CRUD категорий</h2>
                         @forelse($categories as $item)
                             <h3>{{ $item->title }}</h3>
                             <form action="{{ route('admin.categories.destroy',  $item) }}" method="post">

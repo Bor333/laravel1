@@ -3,7 +3,7 @@
 @section('menu')
     @include('admin.menu')
 @endsection
-@dd($categories)
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -12,26 +12,27 @@
                     <div class="card-body">
 
                         <form method="POST"
-                              action="@if (!$categories->id){{ route('admin.news.store') }} @else {{ route('admin.news.update', $news) }}@endif"
+                              action="@if (!$category->id){{ route('admin.categories.store') }} @else {{ route('admin.categories.update', $category) }}@endif"
                               enctype="multipart/form-data">
                             @csrf
-                            @if ($categories->id) @method('PUT') @endif
+                            @if ($category->id) @method('PUT') @endif
                             <div class="form-group">
-                                <label for="CategoryTitle">Название категории</label>
+                                <label for="categoryTitle">Название категории</label>
                                 <input type="text" name="title" id="categoryTitle" class="form-control" required="required"
-                                       value="{{ old('title') ?? $categories->title }}">
+                                       value="{{ old('title') ?? $category->title }}">
 
 
-                                <label for="CategorySlug">slug категории</label>
-                                <textarea name="text" id="newsText" class="form-control"
-                                          required="required">{{ old('text') ?? $categories->text }}</textarea>
+                                <label for="categorySlug">slug категории</label>
+                                <textarea name="text" id="categorySlug" class="form-control"
+                                          required="required">{{ old('slug') ?? $category->slug }}</textarea>
+
 
                             </div>
 
 
                             <div class="form-group">
                                 <input class="btn btn-outline-primary" type="submit"
-                                       value="@if ($categories->id){{__('Изменить')}}@else{{__('Добавить')}}@endif категорию">
+                                       value="@if ($category->id){{__('Изменить')}}@else{{__('Добавить')}}@endif категорию">
                             </div>
 
                         </form>

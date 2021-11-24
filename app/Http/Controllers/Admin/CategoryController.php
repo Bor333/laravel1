@@ -13,63 +13,47 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.categories.index', [
+        return view('admin.categories', [
             'categories' => Category::all()
         ]);
     }
 
     public function create(Category $category)
     {
-        return view('admin.categories.create', [
-            'categories' => Category::all()
+        return view('admin.category_create', [
+            'category' => $category
         ]);
     }
 
-    public function store(Request $request, News $news)
+    public function store(Request $request, Category $category)
     {
         $request->flash();
 
-        $url = null;
+        $category->fill($request->all())->save();
 
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
-        }
-
-        $news->image = $url;
-        $news->fill($request->all())->save();
-
-        return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
+        return redirect()->route('categories.show', $category->id)->with('success', 'Категория добавлена');
     }
 
-    public function update(Request $request, News $news)
+    public function update(Request $request, Category $category)
     {
         $request->flash();
 
-        $url = null;
 
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
-        }
+        $category->fill($request->all())->save();
 
-        $news->image = $url;
-        $news->fill($request->all())->save();
-
-        return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
+        return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория изменена');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.index')->with('success', 'Новость удалена');
+        return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
     }
 
-    public function edit(News $news)
+    public function edit(Category $category)
     {
-        return view('admin.categories.create', [
-            'news' => $news,
-            'categories' => Category::all()
+        return view('admin.category_create', [
+            'category' => $category
         ]);
     }
 }

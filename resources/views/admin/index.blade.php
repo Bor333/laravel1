@@ -22,9 +22,11 @@
                         @empty
                             <p>Нет новостей</p>
                         @endforelse
+
                     </div>
                 </div>
             </div>
         </div>
+        {{ $news->links() }}
     </div>
 @endsection
