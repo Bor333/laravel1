@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +11,7 @@ class UserTest extends TestCase
 
     public function test_news()
     {
-        $news = new News(new Categories());
+        $news = new News(new Category());
 
         $this->assertIsArray($news->getNews());
 
@@ -19,7 +19,7 @@ class UserTest extends TestCase
 
     public function test_categories()
     {
-        $category = new Categories();
+        $category = new Category();
 
         $this->assertIsArray($category->getCategories());
 

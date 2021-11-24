@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Categories;
+use App\Models\Category;
 
 use App\Models\News;
 use Illuminate\Console\Command;
@@ -39,7 +39,7 @@ class savejson extends Command
      *
      * @return int
      */
-    public function handle(News $news, Categories $categories)
+    public function handle(News $news, Category $categories)
     {
         var_dump($news->getNews());
         File::put(storage_path() . '/news.json', json_encode($news->getNews(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,15 +14,14 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin.categories.index', [
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 
-    public function create(News $news)
+    public function create(Category $category)
     {
         return view('admin.categories.create', [
-            'news' => $news,
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 
@@ -60,7 +59,7 @@ class CategoryController extends Controller
         return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
     }
 
-    public function destroy(Categories $category)
+    public function destroy(Category $category)
     {
         $category->delete();
         return redirect()->route('admin.index')->with('success', 'Новость удалена');
@@ -70,7 +69,7 @@ class CategoryController extends Controller
     {
         return view('admin.categories.create', [
             'news' => $news,
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 }

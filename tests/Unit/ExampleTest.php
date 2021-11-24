@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use PHPUnit\Framework\TestCase;
 
@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $news = new News(new Categories());
+        $news = new News(new Category());
 
         $this->assertIsArray($news->getNews());
 

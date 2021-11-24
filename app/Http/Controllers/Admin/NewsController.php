@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +21,7 @@ class NewsController extends Controller
     {
         return view('admin.create', [
             'news' => $news,
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 
@@ -69,7 +69,7 @@ class NewsController extends Controller
     {
         return view('admin.create', [
             'news' => $news,
-            'categories' => Categories::all()
+            'categories' => Category::all()
         ]);
     }
 }

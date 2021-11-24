@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\News;
 use Faker\Factory;
 use Illuminate\Http\Request;
@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-
-
-
 
     public function test1(News $news)
     {
