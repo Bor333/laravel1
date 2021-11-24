@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Category;
+use App\Models\Categories;
 use App\Models\News;
 
 
@@ -12,13 +12,13 @@ class CategoryController extends Controller
     public function index()
     {
         return view('news.categories', [
-            'categories' => Category::all()
+            'categories' => Categories::all()
         ]);
     }
 
     public function show($slug)
     {
-        $category = Category::query()->where('slug', $slug)->first();
+        $category = Categories::query()->where('slug', $slug)->first();
 
        // $news = News::query()->where('category_id', $category->id)->get();
 
