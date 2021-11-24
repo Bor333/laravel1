@@ -3,7 +3,7 @@
 @section('menu')
     @include('admin.menu')
 @endsection
-@dd($categories)
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

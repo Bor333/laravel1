@@ -18,9 +18,11 @@ class CategoryController extends Controller
 
     public function show($slug)
     {
-        $category = Categories::query()->where('slug', $slug)->first();
+//        $category = Categories::query()->where('slug', $slug)->first();
 
        // $news = News::query()->where('category_id', $category->id)->get();
+
+        $category = Categories::query()->where('slug', $slug)->first();
 
         return view('news.category', [
             'category' => $category->title,
