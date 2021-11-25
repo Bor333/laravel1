@@ -1,0 +1,130 @@
+{
+    "1": {
+        "id": 1,
+        "title": "Новость 11",
+        "text": "А у нас новость 1 и она очень хорошая!",
+        "image": null,
+        "category_id": 1,
+        "isPrivate": false
+    },
+    "2": {
+        "id": 2,
+        "title": "Новость 2",
+        "text": "А тут у нас плохие новости(((",
+        "image": null,
+        "category_id": 1,
+        "isPrivate": true
+    },
+    "3": {
+        "id": 3,
+        "title": "Новость 3",
+        "text": "А у нас новость 3 и не она очень хорошая...",
+        "image": null,
+        "category_id": 2,
+        "isPrivate": false
+    },
+    "4": {
+        "id": 4,
+        "title": "Новость 4",
+        "text": "А тут у нас еще плохие новости(((",
+        "image": null,
+        "category_id": 2,
+        "isPrivate": true
+    },
+    "5": {
+        "title": "22",
+        "category_id": "1",
+        "text": "33",
+        "id": 5,
+        "isPrivate": false,
+        "image": null
+    },
+    "6": {
+        "title": "11",
+        "category_id": "1",
+        "text": "22",
+        "isPrivate": true,
+        "image": null,
+        "id": 6
+    },
+    "7": {
+        "title": "12",
+        "category_id": "1",
+        "text": "22",
+        "id": 7,
+        "isPrivate": false,
+        "image": null
+    },
+    "8": {
+        "title": "13",
+        "category_id": "1",
+        "text": "22",
+        "image": null,
+        "id": 8,
+        "isPrivate": false
+    },
+    "9": {
+        "title": "111",
+        "category_id": "1",
+        "text": "22",
+        "image": null,
+        "id": 9,
+        "isPrivate": false
+    },
+    "10": {
+        "title": null,
+        "category_id": "1",
+        "text": null,
+        "id": 10,
+        "isPrivate": false,
+        "image": null
+    },
+    "11": {
+        "title": null,
+        "category_id": "1",
+        "text": null,
+        "image": "\/storage\/img\/IQYmoZx49Gtqtsd0iYcdzu4jMNvpR99l1Gt8g4PE.jpg",
+        "id": 11,
+        "isPrivate": false
+    },
+    "12": {
+        "title": "4",
+        "category_id": "1",
+        "text": "4",
+        "image": "\/storage\/img\/78W57mNu35eaDjGs3ycYcyzYkFAHPqrWDt20ApH4.jpg",
+        "id": 12,
+        "isPrivate": false
+    },
+    "13": {
+        "title": "test1",
+        "category_id": "1",
+        "text": "1",
+        "image": "\/storage\/img\/FR5QYDLnVQcm0szFduvnXw90EGtyKeJUWgqxGsRD.jpg",
+        "id": 13,
+        "isPrivate": false
+    },
+    "14": {
+        "title": "test2",
+        "category_id": "1",
+        "text": "2",
+        "image": "\/storage\/img\/NYIIwltf84pmmcx8X7GpjevgwhPuFESiZfbUen6f.jpg",
+        "id": 14,
+        "isPrivate": false
+    },
+    "15": {
+        "title": "test3",
+        "category_id": "1",
+        "text": "3",
+        "image": "\/storage\/img\/n47coDdBWlxl2cBDxExBL6YY5alKMTGtqmTVaNLV.jpg",
+        "id": 15,
+        "isPrivate": false
+    },
+    "16": {
+        "title": "test4",
+        "category_id": "1",
+        "text": "4",
+        "image": "\/storage\/img\/ROHeRHC4dgfZw4sxh2g59Gq3dECCufloC11n4Jmm.jpg",
+        "id": 16,
+        "isPrivate": false
+    }
+}

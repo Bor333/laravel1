@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -35,11 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="{{ route('home') }}">Главная</a></li>
-                    <li><a class="nav-link" href="{{ route('news.index') }}">Новости</a></li>
-                    <li><a class="nav-link" href="{{ route('news.category.index') }}">Категории</a></li>
-                    <li><a class="nav-link" href="{{ route('about') }}">О нас</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.index') }}">Админка</a></li>
+                   @yield('menu')
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -82,7 +79,31 @@
         </div>
     </nav>
 
+
     <main class="py-4">
+
+        @if (session('success'))
+        <div class="container">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        @endif
+
+            @if (session('danger'))
+                <div class="container">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('danger') }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            @endif
+
         @yield('content')
     </main>
 </div>

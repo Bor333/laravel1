@@ -1,26 +1,19 @@
 <?php
 
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Category
+class Category extends Model
 {
-    private $category = [
-        [
-            'id' => 1,
-            'name' => 'Политика',
-            'text' => 'А у нас новость 1 и она очень хорошая!',
-        ],
-        [
-            'id' => 2,
-            'name' => 'Спорт',
-            'text' => 'А тут у нас плохие новости((('
-        ]
-    ];
+    use HasFactory;
 
-    public function getCategory() {
-        return $this->category;
+    protected $table = 'categories';
+
+    protected $fillable = ['title', 'slug'];
+
+    public function news() {
+        return $this->hasMany(News::class);
     }
-
 }
