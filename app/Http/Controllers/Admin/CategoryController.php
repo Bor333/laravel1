@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -50,7 +51,8 @@ class CategoryController extends Controller
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
         } else {
-            return redirect()->route('admin.categories.index')->with('danger', 'Категория не пуста!');
+            $category = Category::query()->where('slug', $category->slug)->first();
+            return redirect()->route('news.category.show', $category->slug)->with('danger', 'Категория не пуста!');
         }
     }
 
