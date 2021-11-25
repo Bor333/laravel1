@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         $category->fill($request->all())->save();
 
-        return redirect()->route('admin.categories.index', $category->slug)->with('success', 'Категория изменена');
+        return redirect()->route('news.category.show', $category->slug)->with('success', 'Категория изменена');
     }
 
     public function destroy(Category $category)
