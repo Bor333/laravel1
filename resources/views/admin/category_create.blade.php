@@ -21,11 +21,9 @@
                                 <input type="text" name="title" id="categoryTitle" class="form-control" required="required"
                                        value="{{ old('title') ?? $category->title }}">
 
-
                                 <label for="categorySlug">slug категории</label>
-                                <textarea name="text" id="categorySlug" class="form-control"
-                                          required="required">{{ old('slug') ?? $category->slug }}</textarea>
-
+                                <input type="text" name="slug" id="categorySlug" class="form-control" required="required"
+                                       value="{{ old('slug') ?? $category->slug }}">
 
                             </div>
 

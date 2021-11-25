@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
         $category->fill($request->all())->save();
 
-        return redirect()->route('categories.show', $category->id)->with('success', 'Категория добавлена');
+        return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория добавлена');
     }
 
     public function update(Request $request, Category $category)
