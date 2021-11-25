@@ -12,8 +12,8 @@
                     <div class="card-body">
                         @if ($news)
                             <h2>{{ $news->title }}</h2>
+                            <div class="card-img" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg')}})"></div>
                             @if (!$news->isPrivate)
-                                <div class="card-img" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg')}})"></div>
                                 <p>{{ $news->text }}</p>
                             @else
                                 Заререгестрируйтесь для просмотра

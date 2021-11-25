@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class CategoryController extends Controller
 
         $category->fill($request->all())->save();
 
-        return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория изменена');
+        return redirect()->route('admin.categories.index', $category->slug)->with('success', 'Категория изменена');
     }
 
     public function destroy(Category $category)
@@ -50,7 +51,7 @@ class CategoryController extends Controller
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
         } else {
-            return redirect()->route('admin.categories.index')->with('danger', 'Категория не пуста!');
+            return redirect()->route('news.category.show', $category->slug)->with('danger', 'Категория не пуста!');
         }
     }
 

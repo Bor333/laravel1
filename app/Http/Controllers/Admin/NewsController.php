@@ -13,7 +13,7 @@ class NewsController extends Controller
     public function index()
     {
 
-        return view('admin.index', [
+        return view('admin.news', [
             'news' => News::paginate(7)
         ]);
     }
@@ -54,6 +54,8 @@ class NewsController extends Controller
             $url = Storage::url($path);
         }
 
+        //$news->isPrivate = isset($request->isPrivate);
+
         $news->image = $url;
         $news->fill($request->all())->save();
 
@@ -63,7 +65,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('admin.index')->with('success', 'Новость удалена');
+        return redirect()->route('admin.news.index')->with('success', 'Новость удалена');
     }
 
     public function edit(News $news)
