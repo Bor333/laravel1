@@ -12,9 +12,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        //$category = DB::table('categories')->get();
-        //dd($category->keyBy('id'));
-
         return view('news.categories', [
             'categories' => Category::all()
         ]);
@@ -22,10 +19,6 @@ class CategoryController extends Controller
 
     public function show($slug)
     {
-//        $category = Category::query()->where('slug', $slug)->first();
-
-       // $news = News::query()->where('category_id', $category->id)->get();
-
         $category = Category::query()->where('slug', $slug)->first();
 
         return view('news.category', [

@@ -46,8 +46,12 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
+        if (!$category->news->first()) {
+            $category->delete();
+            return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
+        } else {
+            return redirect()->route('admin.categories.index')->with('danger', 'Категория не пуста!');
+        }
     }
 
     public function edit(Category $category)
