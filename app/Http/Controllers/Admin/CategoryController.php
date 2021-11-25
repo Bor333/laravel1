@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         $category->fill($request->all())->save();
 
-        return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория изменена');
+        return redirect()->route('admin.categories.index', $category->slug)->with('success', 'Категория изменена');
     }
 
     public function destroy(Category $category)
@@ -51,7 +51,6 @@ class CategoryController extends Controller
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
         } else {
-            $category = Category::query()->where('slug', $category->slug)->first();
             return redirect()->route('news.category.show', $category->slug)->with('danger', 'Категория не пуста!');
         }
     }
