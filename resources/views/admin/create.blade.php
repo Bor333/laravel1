@@ -26,7 +26,7 @@
                                     @foreach($categories as $item)
                                         <option
                                             @if ($item->id == old('category_id') ?? $item->id == $news->category_id) selected @endif
-                                        value="{{ $item->id }}">{{ $item['title'] }}
+                                        value="{{ $item->id }}">{{ $item->title }}
                                         </option>
                                     @endforeach
                                 </select>

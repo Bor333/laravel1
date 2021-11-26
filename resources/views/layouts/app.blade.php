@@ -93,10 +93,10 @@
         </div>
         @endif
 
-            @if (session('danger'))
+            @if (session('error'))
                 <div class="container">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('danger') }}
+                        {{ session('error') }}
                         <button type="button" class="close" data-dismiss="alert">
                             <span aria-hidden="true"></span>
                         </button>

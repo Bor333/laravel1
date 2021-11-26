@@ -51,7 +51,7 @@ class CategoryController extends Controller
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
         } else {
-            return redirect()->route('news.category.show', $category->slug)->with('danger', 'Категория не пуста!');
+            return redirect()->route('news.category.show', $category->slug)->with('error', 'Категория не пуста!');
         }
     }
 

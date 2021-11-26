@@ -37,6 +37,7 @@ class NewsController extends Controller
             $url = Storage::url($path);
         }
 
+
         $news->image = $url;
         $news->fill($request->all())->save();
 
@@ -54,7 +55,7 @@ class NewsController extends Controller
             $url = Storage::url($path);
         }
 
-        //$news->isPrivate = isset($request->isPrivate);
+        $news->isPrivate = isset($request->isPrivate);
 
         $news->image = $url;
         $news->fill($request->all())->save();
