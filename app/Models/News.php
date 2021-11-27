@@ -18,5 +18,16 @@ class News extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function rules() {
+        $tableNameCategory = (new Category())->getTable();
+        return [
+            'title' => 'required|min:5|max:20',
+            'text' => 'required|min:5',
+            'category_id' => "required|exists:{$tableNameCategory},id",
+            'image' => 'mimes:jpeg, bmp, png|max: 1000',
+
+        ];
+    }
+
 }
 

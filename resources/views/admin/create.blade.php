@@ -18,23 +18,48 @@
                             @if ($news->id) @method('PUT') @endif
                             <div class="form-group">
                                 <label for="newTitle">Заголовок новости</label>
-                                <input type="text" name="title" id="newsTitle" class="form-control" required="required"
+                                @if ($errors->has('title'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('title') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
+                                <input type="text" name="title" id="newsTitle" class="form-control"
                                        value="{{ old('title') ?? $news->title }}">
 
                                 <label for="NewsCategory">Категория новости</label>
+                                @if ($errors->has('category_id'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('category_id') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <select name="category_id" id="newsCategory" class="form-control">
                                     @foreach($categories as $item)
                                         <option
-                                            @if ($item->id == old('category_id') ?? $item->id == $news->category_id) selected @endif
-                                        value="{{ $item->id }}">{{ $item->title }}
+                                            @if ($item->id == old('category_id') ?? $item->id == $news->category_id) selected
+                                            @endif
+                                            value="{{ $item->id }}">{{ $item->title }}
                                         </option>
                                     @endforeach
+
+                                        <option value="23">error</option>
+
                                 </select>
 
 
                                 <label for="NewsText">Текст новости</label>
-                                <textarea name="text" id="newsText" class="form-control"
-                                          required="required">{{ old('text') ?? $news->text }}</textarea>
+                                @if ($errors->has('text'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('text') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
+                                <textarea name="text" id="newsText"
+                                          class="form-control">{{ old('text') ?? $news->text }}</textarea>
                                 <div class="form-check">
 
                                     <input
@@ -44,7 +69,16 @@
                                 </div>
                             </div>
 
+
+
                             <div class="form-group">
+                                @if ($errors->has('image'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('image') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <input type="file" name="image">
                             </div>
 

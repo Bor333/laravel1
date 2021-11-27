@@ -28,7 +28,10 @@ class NewsController extends Controller
 
     public function store(Request $request, News $news)
     {
-        $request->flash();
+        $request->validate($news->rules());
+
+
+       // $this->validate($request, $news->rules());
 
         $url = null;
 
