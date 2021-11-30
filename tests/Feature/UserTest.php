@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-
+/*
     public function test_exist_home()
     {
         $response = $this->get('/');
@@ -86,6 +86,7 @@ class UserTest extends TestCase
         $view->assertSee('Главная');
     }
 
+
     public function test_template_news()
     {
         $view = $this->view('news/index', ['header' => 'Новости']);
@@ -114,4 +115,6 @@ class UserTest extends TestCase
 
 
     }
+*/
+
 }

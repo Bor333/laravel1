@@ -25,7 +25,7 @@ class Ember implements Rule
      */
     public function passes($attribute, $value)
     {
-        dd($attribute, $value);
+       return true;
     }
 
     /**

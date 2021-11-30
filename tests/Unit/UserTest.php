@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
-
+/*
     public function test_news()
     {
         $news = new News(new Category());
@@ -24,4 +24,5 @@ class UserTest extends TestCase
         $this->assertIsArray($category->getCategories());
 
     }
+*/
 }

@@ -25,7 +25,7 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required, min:5, max:20', new Ember()],
+            'title' => ['required', 'min:5', 'max:20', new Ember()],
             'text' => 'required|min:5',
             'category_id' => "required|exists:App\Models\Category,id",
             'image' => 'mimes:jpeg, bmp, png|max: 1000',
