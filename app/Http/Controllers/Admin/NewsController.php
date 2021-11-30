@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -26,10 +27,11 @@ class NewsController extends Controller
         ]);
     }
 
-    public function store(Request $request, News $news)
+    public function store(NewsRequest $request, News $news)
     {
-        $request->validate($news->rules(), [], $news->attributeNames());
+     //   $request->validate($news->rules(), [], $news->attributeNames());
 
+       $request->validated();
 
        // $this->validate($request, $news->rules());
 
