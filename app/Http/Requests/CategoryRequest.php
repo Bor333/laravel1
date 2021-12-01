@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Boris;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
@@ -25,14 +26,15 @@ class CategoryRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:20',
-            'slug' => 'required|min:3',
+            'slug' => ['required', 'min:3', New Boris()],
+           // 'slug' => 'required|min:3',
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => 'Название категории заполнить вам необходимо',
+           'title.required' => 'Название категории заполнить вам необходимо',
             'title.min' => 'Буков в поле надобно боле',
         ];
 

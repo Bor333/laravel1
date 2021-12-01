@@ -28,14 +28,14 @@
                                 <input type="text" name="title" id="newsTitle" class="form-control"
                                        value="{{ old('title') ?? $news->title }}">
 
-                                @if ($errors->has('slug'))
-                                    <div class="alert alert-danger" role="alert">
-                                        @foreach($errors->get('slug') as $error)
-                                            {{ $error }}<br>
-                                        @endforeach
-                                    </div>
-                                @endif
                                 <label for="NewsCategory">Категория новости</label>
+                                    @if ($errors->has('slug'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('slug') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 @if ($errors->has('category_id'))
                                     <div class="alert alert-danger" role="alert">
                                         @foreach($errors->get('category_id') as $error)

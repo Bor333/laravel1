@@ -17,18 +17,4 @@ class Category extends Model
         return $this->hasMany(News::class);
     }
 
-    public function rules() {
-
-        return [
-            'title' => 'required|min:5|max:20',
-            'slug' => 'required|min:3',
-        ];
-    }
-
-    public function attributeNames() {
-        return [
-            'title' => 'Заголовок категории',
-            'slug' => 'slug категории',
-        ];
-    }
 }

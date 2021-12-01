@@ -29,19 +29,15 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request, Category $category)
     {
         $request->validated();
-        //   $request->validate($category->rules(), [], $category->attributeNames());
-
-        // $this->validate($request, $category->rules());
 
         $category->fill($request->all())->save();
 
         return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория добавлена');
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $request->flash();
-
+        $request->validated();
 
         $category->fill($request->all())->save();
 

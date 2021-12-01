@@ -29,11 +29,11 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request, News $news)
     {
-     //   $request->validate($news->rules(), [], $news->attributeNames());
+      //  $request->validate($news->rules(), [], $news->attributeNames());
 
        $request->validated();
 
-       // $this->validate($request, $news->rules());
+     //   $this->validate($request, $request->rules());
 
         $url = null;
 
@@ -49,10 +49,10 @@ class NewsController extends Controller
         return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
     }
 
-    public function update(Request $request, News $news)
+    public function update (NewsRequest $request, News $news)
     {
       //  $request->flash();
-        $this->validate($request, $news->rules());
+        $request->validated();
 
         $url = null;
 
