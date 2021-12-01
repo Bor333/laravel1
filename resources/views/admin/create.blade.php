@@ -17,7 +17,6 @@
                             @csrf
                             @if ($news->id) @method('PUT') @endif
                             <div class="form-group">
-                                <label for="newTitle">Заголовок новости</label>
                                 @if ($errors->has('title'))
                                     <div class="alert alert-danger" role="alert">
                                         @foreach($errors->get('title') as $error)
@@ -25,9 +24,17 @@
                                         @endforeach
                                     </div>
                                 @endif
+                                <label for="newTitle">Заголовок новости</label>
                                 <input type="text" name="title" id="newsTitle" class="form-control"
                                        value="{{ old('title') ?? $news->title }}">
 
+                                @if ($errors->has('slug'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('slug') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <label for="NewsCategory">Категория новости</label>
                                 @if ($errors->has('category_id'))
                                     <div class="alert alert-danger" role="alert">
@@ -45,8 +52,6 @@
 
                                         </option>
                                     @endforeach
-
-                                        <option value="23">error</option>
 
                                 </select>
 
@@ -69,7 +74,6 @@
                                     <label for="newsPrivate">Приватная</label>
                                 </div>
                             </div>
-
 
 
                             <div class="form-group">

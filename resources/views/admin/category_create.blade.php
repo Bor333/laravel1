@@ -17,16 +17,29 @@
                             @csrf
                             @if ($category->id) @method('PUT') @endif
                             <div class="form-group">
+                                @if ($errors->has('title'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('title') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <label for="categoryTitle">Название категории</label>
-                                <input type="text" name="title" id="categoryTitle" class="form-control" required="required"
+                                <input type="text" name="title" id="categoryTitle" class="form-control"
                                        value="{{ old('title') ?? $category->title }}">
 
+                                @if ($errors->has('slug'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('slug') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <label for="categorySlug">slug категории</label>
-                                <input type="text" name="slug" id="categorySlug" class="form-control" required="required"
+                                <input type="text" name="slug" id="categorySlug" class="form-control"
                                        value="{{ old('slug') ?? $category->slug }}">
 
                             </div>
-
 
                             <div class="form-group">
                                 <input class="btn btn-outline-primary" type="submit"

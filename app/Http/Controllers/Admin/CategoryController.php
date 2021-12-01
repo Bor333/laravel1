@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class CategoryController extends Controller
 {
@@ -26,9 +26,12 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(Request $request, Category $category)
+    public function store(CategoryRequest $request, Category $category)
     {
-        $request->flash();
+        $request->validated();
+        //   $request->validate($category->rules(), [], $category->attributeNames());
+
+        // $this->validate($request, $category->rules());
 
         $category->fill($request->all())->save();
 
