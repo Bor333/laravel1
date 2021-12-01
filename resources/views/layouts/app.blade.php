@@ -93,6 +93,17 @@
         </div>
         @endif
 
+            @if (session('error'))
+                <div class="container">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            @endif
+
         @yield('content')
     </main>
 </div>

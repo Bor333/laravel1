@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Support\Facades\DB;
 
 
 class CategoryController extends Controller
@@ -19,8 +20,6 @@ class CategoryController extends Controller
     public function show($slug)
     {
         $category = Category::query()->where('slug', $slug)->first();
-
-       // $news = News::query()->where('category_id', $category->id)->get();
 
         return view('news.category', [
             'category' => $category->title,

@@ -4,73 +4,60 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.categories.index', [
+        return view('admin.categories', [
             'categories' => Category::all()
         ]);
     }
 
-    public function create(News $news)
+    public function create(Category $category)
     {
-        return view('admin.create', [
-            'news' => $news,
-            'categories' => Category::all()
+        return view('admin.category_create', [
+            'category' => $category
         ]);
     }
 
-    public function store(Request $request, News $news)
+    public function store(CategoryRequest $request, Category $category)
     {
-        $request->flash();
+        $request->validated();
 
-        $url = null;
+        $category->fill($request->all())->save();
 
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
+        return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория добавлена');
+    }
+
+    public function update(CategoryRequest $request, Category $category)
+    {
+        $request->validated();
+
+        $category->fill($request->all())->save();
+
+        return redirect()->route('news.category.show', $category->slug)->with('success', 'Категория изменена');
+    }
+
+    public function destroy(Category $category)
+    {
+        if (!$category->news->first()) {
+            $category->delete();
+            return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
+        } else {
+            return redirect()->route('news.category.show', $category->slug)->with('error', 'Категория не пуста!');
         }
-
-        $news->image = $url;
-        $news->fill($request->all())->save();
-
-        return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
     }
 
-    public function update(Request $request, News $news)
+    public function edit(Category $category)
     {
-        $request->flash();
-
-        $url = null;
-
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
-        }
-
-        $news->image = $url;
-        $news->fill($request->all())->save();
-
-        return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
-    }
-
-    public function destroy(News $news)
-    {
-        $news->delete();
-        return redirect()->route('admin.index')->with('success', 'Новость удалена');
-    }
-
-    public function edit(News $news)
-    {
-        return view('admin.create', [
-            'news' => $news,
-            'categories' => Category::all()
+        return view('admin.category_create', [
+            'category' => $category
         ]);
     }
 }
