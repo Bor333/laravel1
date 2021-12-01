@@ -46,12 +46,14 @@
                                 <select name="category_id" id="newsCategory" class="form-control">
                                     @foreach($categories as $item)
                                         <option
-                                            @if ($item->id == old('category_id')) @elseif ($item->id == $news->category_id) selected
+                                            @if ($item->id == old('category_id')) selected  @elseif ($item->id == $news->category_id) selected
                                             @endif
                                             value="{{ $item->id }}">{{ $item->title }}
 
                                         </option>
                                     @endforeach
+
+                                        <option value="23">error</option>
 
                                 </select>
 
