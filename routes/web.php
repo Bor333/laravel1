@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
@@ -42,7 +44,9 @@ Route::name('news.')
 
 Route::name('admin.')
     ->prefix('admin')
+    ->middleware('auth')
     ->group(function () {
+        Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->name('updateProfile');
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
@@ -53,7 +57,12 @@ Route::name('admin.')
 
 Route::view('/about', 'about')->name('about');
 
-Auth::routes();
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('logout',[LoginController::class, 'logout']);
+
+// Auth::routes();
 
 
 
