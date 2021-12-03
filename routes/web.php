@@ -44,8 +44,11 @@ Route::name('news.')
 
 Route::name('admin.')
     ->prefix('admin')
-   ->middleware('auth')
+   ->middleware(['auth', 'is_admin'])
     ->group(function () {
+        Route::get('/ajax', [AdminController::class, 'ajax'])->name('ajax');
+        Route::post('/ajax', [AdminController::class, 'send']);
+
         Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->name('updateProfile');
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');

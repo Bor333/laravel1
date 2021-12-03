@@ -5,7 +5,6 @@
 @endsection
 
 
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -62,11 +61,13 @@
                                     @endif
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('password') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
