@@ -12,10 +12,10 @@ class ProfileController extends Controller
 {
     public function update(Request $request)
     {
+        $errors = [];
 
         $user = Auth::user();
 
-      //  $user = User::find(1);
 
         if ($request->isMethod('post')) {
 
@@ -28,9 +28,11 @@ class ProfileController extends Controller
                     'email' => $request->post('email')
                 ])->save();
 
-                return redirect()->route('admin.updateProfile')->withSucces('Профиль успешно изменен!');
+                return redirect()->route('admin.updateProfile')->withSuccess('Профиль успешно изменен!');
         } else {
-                return redirect()->route('admin.updateProfile')->withError('Ошибка!');
+             $errors['password'][] = 'Неверно введен текущий пароль';
+
+                return redirect()->route('admin.updateProfile')->withErrors($errors);
             }
         }
 
