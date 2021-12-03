@@ -12,25 +12,24 @@ class ProfileController extends Controller
 {
     public function update(Request $request)
     {
-
+        $errors = [];
         $user = Auth::user();
 
-      //  $user = User::find(1);
 
         if ($request->isMethod('post')) {
 
-               $this->validate($request, $this->validateRules(), [], $this->attributeNames());
-         if (Hash::check($request->post('password'), $user->password)) {
+            $this->validate($request, $this->validateRules(), [], $this->attributeNames());
+            if (Hash::check($request->post('password'), $user->password)) {
 
                 $user->fill([
                     'name' => $request->post('name'),
                     'password' => Hash::make($request->post('newPassword')),
                     'email' => $request->post('email')
                 ])->save();
-
-                return redirect()->route('admin.updateProfile')->withSucces('Профиль успешно изменен!');
-        } else {
-                return redirect()->route('admin.updateProfile')->withError('Ошибка!');
+                return redirect()->route('admin.updateProfile')->withSuccess('Профиль успешно изменен!');
+            } else {
+                $errors['password'][] = 'Неверное введен текущий пароль';
+                return redirect()->route('admin.updateProfile')->withError($errors);
             }
         }
 

@@ -23,11 +23,13 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->name }}" required autocomplete="name" autofocus>
 
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    @if ($errors->has('name'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('name') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -37,11 +39,13 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $user->email }}" required autocomplete="email">
 
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    @if ($errors->has('email'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('email') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -49,6 +53,13 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Текущий пароль</label>
 
                                 <div class="col-md-6">
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('password') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                     @error('password')
@@ -60,6 +71,13 @@
                             </div>
 
                             <div class="form-group row">
+                                @if ($errors->has('newPassword'))
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach($errors->get('newPassword') as $error)
+                                            {{ $error }}<br>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Новый пароль</label>
 
                                 <div class="col-md-6">
