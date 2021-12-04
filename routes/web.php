@@ -1,16 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +38,7 @@ Route::name('news.')
             });
     });
 
-
+Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->name('updateProfile');
 
 Route::name('admin.')
     ->prefix('admin')
@@ -48,8 +46,6 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/ajax', [AdminController::class, 'ajax'])->name('ajax');
         Route::post('/ajax', [AdminController::class, 'send']);
-
-        Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->name('updateProfile');
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');

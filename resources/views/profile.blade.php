@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('menu')
-    @include('admin.menu')
+    @include('menu')
 @endsection
 
 
@@ -13,7 +13,7 @@
                     <div class="card-header">Изменения профиля</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.updateProfile') }}">
+                        <form method="POST" action="{{ route('updateProfile') }}">
                             @csrf
 
                             <div class="form-group row">
