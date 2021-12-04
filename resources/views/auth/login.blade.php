@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Логин')
+
+@section('menu')
+    @include('admin.menu')
+@endsection
+
 @section('content')
     <br>
     <div class="container">

@@ -13,11 +13,13 @@
                         @if ($news)
                             <h2>{{ $news->title }}</h2>
                             <div class="card-img" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg')}})"></div>
-                            @if (!$news->isPrivate)
+                            @auth()
                                 <p>{{ $news->text }}</p>
-                            @else
-                                Заререгестрируйтесь для просмотра
-                            @endif
+                            @endauth
+                            @guest()
+                                Зарегестрируйтесь для просмотра
+                            @endguest
+
                         @else
                             Нет новости с таким id
                         @endif
