@@ -51,8 +51,7 @@ Route::name('admin.')
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
         Route::resource('/news', AdminNewsController::class)->except('show');
         Route::resource('/categories', AdminCategoryController::class)->except('show');
-        Route::get('/profiles', [AdminProfileController::class, 'index'])->name('profile');
-        Route::get( '/profiles/{user}',  [AdminProfileController::class, 'changeIsAdmin'])->name('changeIsAdmin');
+        Route::match(['get', 'post'], '/profiles', [AdminProfileController::class, 'index'])->name('profile');
 
     });
 

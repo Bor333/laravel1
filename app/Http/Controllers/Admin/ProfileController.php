@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index(Request $request, User $user)
     {
+
+        if ($request->isMethod('post')) {
+            $user->is_admin = 0;
+            $user->save();
+            //  $user->fill($request->all())->save();
+
+
+            return redirect()->route('admin.profile')->with('success');
+        }
         return view('admin.profile', [
             'profiles' => User::all()
         ]);
     }
-    public function changeIsAdmin ($user)
+
+    public function changeIsAdmin($user)
     {
         /*
         $user->is_admin = (!$user->is_admin);
