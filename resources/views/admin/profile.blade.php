@@ -3,31 +3,35 @@
 @section('menu')
     @include('admin.menu')
 @endsection
-@dump($profiles)
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body">
+                    <form class="card-body">
                         <h2>Профили</h2>
                         @forelse($profiles as $user)
                             <p> {{ $user->name }}
 
+                                <a class="btn btn-dark" href="{{  route('admin.changeIsAdmin', $user)  }}">Назначить админом/убрать из админов</a>
                                 @if ($user->is_admin == true)
-                                    <button type="submit" class="btn btn-dark">Админ</button>
+                                    Админ
                                 @else
-                                    <a class="btn btn-success" href="{{  route('admin.changeIsAdmin', $user)  }}">Назначить админом</a>
+                                    Не админ
                                 @endif
+                    </form>
 
-                            </p>
-                        @empty
-                            <p>Нет зарегестрированных пользователей</p>
+                    </p>
+                    @empty
+                        <p>Нет зарегестрированных пользователей</p>
                         @endforelse
-
-                    </div>
+                        </form>
                 </div>
             </div>
         </div>
     </div>
+
+    </div>
 @endsection
+

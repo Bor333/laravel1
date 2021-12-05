@@ -22,8 +22,9 @@ class ProfileController extends Controller
         $user->fill($user->is_admin)->save();
 */
 
-        $data = User::find($user->id);
-        $data->is_admin = !$user->is_admin;
+        $data = User::find($user);
+
+        $data->is_admin = 1;
         $data->save();
         return redirect()->route('admin.profile')->with('success', 'Профиль изменен');
     }
