@@ -19,6 +19,10 @@
     <a class="nav-link"  href="{{ route('admin.categories.create') }}">Добавить категорию</a>
 </li>
 
+<li class="nav-item {{ request()->routeIs('admin.profile')?'active':'' }}">
+    <a class="nav-link"  href="{{ route('admin.profile') }}">Профили</a>
+</li>
+
 <li class="nav-item {{ request()->routeIs('admin.test1')?'active':'' }}">
     <a class="nav-link"  href="{{ route('admin.test1') }}">download json</a>
 </li>
@@ -30,5 +34,6 @@
 <li class="nav-item {{ request()->routeIs('admin.ajax')?'active':'' }}">
     <a class="nav-link"  href="{{ route('admin.ajax') }}">Ajax Test</a>
 </li>
+
 
 <br>

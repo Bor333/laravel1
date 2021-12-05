@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
-
 Route::name('news.')
     ->prefix('news')
     ->group(function () {
@@ -42,15 +42,18 @@ Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->
 
 Route::name('admin.')
     ->prefix('admin')
-   ->middleware(['auth', 'is_admin'])
+    ->middleware(['auth', 'is_admin'])
     ->group(function () {
         Route::get('/ajax', [AdminController::class, 'ajax'])->name('ajax');
         Route::post('/ajax', [AdminController::class, 'send']);
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-        Route::resource('/news',AdminNewsController::class)->except('show');
+        Route::resource('/news', AdminNewsController::class)->except('show');
         Route::resource('/categories', AdminCategoryController::class)->except('show');
+        Route::get('/profiles', [AdminProfileController::class, 'index'])->name('profile');
+        Route::match(['get', 'post'], '/profiles',  [AdminProfileController::class, 'changeIsAdmin'])->name('changeIsAdmin');
+
     });
 
 
@@ -59,9 +62,9 @@ Route::view('/about', 'about')->name('about');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('logout',[LoginController::class, 'logout']);
+Route::post('logout', [LoginController::class, 'logout']);
 
 // Auth::routes();
-
+// <a class="btn btn-success" href="{{  route('admin.profiles.changeIsAdmin', $item) }}">Назначить админом</a>
 
 
