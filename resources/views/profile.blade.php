@@ -52,8 +52,6 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Текущий пароль</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
                                     @if ($errors->has('password'))
                                         <div class="alert alert-danger" role="alert">
                                             @foreach($errors->get('password') as $error)
@@ -61,6 +59,8 @@
                                             @endforeach
                                         </div>
                                     @endif
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
                                 </div>
                             </div>
 
@@ -68,7 +68,29 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Новый пароль</label>
 
                                 <div class="col-md-6">
+                                    @if ($errors->has('newPassword'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('newPassword') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
                                     <input id="password-confirm" type="password" class="form-control" name="newPassword" required autocomplete="new-password">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Подтвердите пароль</label>
+
+                                <div class="col-md-6">
+                                    @if ($errors->has('newPassword_confirmation'))
+                                        <div class="alert alert-danger" role="alert">
+                                            @foreach($errors->get('newPassword_confirmation') as $error)
+                                                {{ $error }}<br>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                    <input id="password-confirm" type="password" class="form-control" name="newPassword_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
 

@@ -14,7 +14,6 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-
         if ($request->isMethod('post')) {
 
                $this->validate($request, $this->validateRules(), [], $this->attributeNames());
@@ -45,7 +44,7 @@ class ProfileController extends Controller
             'name' => 'required|string|max:15',
             'email' => 'required|email|unique:users,email,' . Auth::id(),
             'password' => 'required',
-            'newPassword' => 'required|string|min:3',
+            'newPassword' => 'required|string|min:3|confirmed',
         ];
     }
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Админка')
+
 @section('menu')
     @include('admin.menu')
 @endsection
