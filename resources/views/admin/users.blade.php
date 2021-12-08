@@ -14,18 +14,17 @@
                 @forelse($users as $user)
                     <div class="card">
                         <div class="card-body">
-                            {{ $user->name }}
-                            <form action="{{ }}" method="post">
-                                @csrf
+                            <h5>{{ $user->name }}</h5>
 
-                                <button type="submit" name="swap" id="swapIsAdmin" class="form-control" value="{$user->id}">Назначить админом/убрать из админов</button>
+                            <a href="{{ route('admin.toggleAdmin', $user) }}" type="button" class="btn btn-outline-secondary">Назначить/Снять
+                                админа</a>
 
                                 @if ($user->is_admin == true)
                                     Админ
                                 @else
                                     Не админ
                                 @endif
-                            </form>
+
                         </div>
                     </div>
                 @empty

@@ -18,7 +18,7 @@ class UserController extends Controller
         if ($user->id != Auth::id()){
             $user->is_admin = !$user->is_admin;
             $user->save();
-            return redirect()->route('admin.updateUsers')->withSuccess('Админ назначен');
+            return redirect()->route('admin.updateUsers')->withSuccess('Админ назначен/снят');
         } else {
             return redirect()->route('admin.updateUsers')->withError('Нельзя снимать админа с себя');
         }
