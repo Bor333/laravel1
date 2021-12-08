@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ParserController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
+
 
 use App\Http\Controllers\ProfileController;
 
@@ -45,13 +47,18 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/ajax', [AdminController::class, 'ajax'])->name('ajax');
         Route::post('/ajax', [AdminController::class, 'send']);
+
+        Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
+        Route::post('/users/toggleAdmin/', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
+
+        Route::get('parser', [ParserController::class, 'index'])->name('parser');
+
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
         Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
+
         Route::resource('/news', AdminNewsController::class)->except('show');
         Route::resource('/categories', AdminCategoryController::class)->except('show');
-        Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
-        Route::get('/users/toggleAdmin/{user}', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
 
     });
 
@@ -60,8 +67,10 @@ Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])->
 
 Route::view('/about', 'about')->name('about');
 
+Route::get('/auth/vk', [LoginController::class, 'loginVK'])->name('vkLogin');
+Route::get('/auth/vk/response', [LoginController::class, 'responseVK'])->name('vkResponse');
 
  Auth::routes();
-
+// route('admin.toggleAdmin', $user
 
 

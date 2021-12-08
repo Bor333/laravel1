@@ -15,13 +15,17 @@
                     <div class="card">
                         <div class="card-body">
                             {{ $user->name }}
-                            @if ($user->is_admin)
-                                <a href="{{ route('admin.toggleAdmin', $user) }}" type="button" class="btn btn-outline-secondary">Снять
-                                    админа</a>
-                            @else
-                                <a href="{{ route('admin.toggleAdmin', $user) }}" type="button" class="btn btn-primary">Назначить
-                                    админа</a>
-                            @endif
+                            <form action="{{ }}" method="post">
+                                @csrf
+
+                                <button type="submit" name="swap" id="swapIsAdmin" class="form-control" value="{$user->id}">Назначить админом/убрать из админов</button>
+
+                                @if ($user->is_admin == true)
+                                    Админ
+                                @else
+                                    Не админ
+                                @endif
+                            </form>
                         </div>
                     </div>
                 @empty

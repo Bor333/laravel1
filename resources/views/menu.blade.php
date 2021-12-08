@@ -14,9 +14,11 @@
     <a class="nav-link" href="{{ route('about') }}">О нас</a>
 </li>
 
+@auth()
 <li class="nav-item {{ request()->routeIs('updateProfile')?'active':'' }}">
     <a class="nav-link" href="{{ route('updateProfile') }}">Profile</a>
 </li>
+@endauth()
 
 @auth
     @if (Auth::user()->is_admin)
