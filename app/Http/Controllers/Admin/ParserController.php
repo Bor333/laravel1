@@ -16,6 +16,7 @@ class ParserController extends Controller
     {
 
         $xml = XMLParser::load('https://lenta.ru/rss');
+
         $data = $xml->parse([
             'title' => ['uses' => 'channel.title'],
             'link' => ['uses' => 'channel.link'],
@@ -39,12 +40,10 @@ class ParserController extends Controller
                 'category_id' => Category::query()->where('title', $news['category'])->value('id'),
             ]);
 
-            // получить новость
-            // добавить id категории в новость
-            //help News::query()->firstOrCreate([])
 
-            $i++;
-            if ($i == 10) break;
+   //         $i++;
+   //        if ($i == 10) break;
         }
+        return redirect()->route('news.index')->withSuccess('Новости добавлены!');
     }
 }

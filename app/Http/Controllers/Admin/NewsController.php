@@ -29,11 +29,7 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request, News $news)
     {
-      //  $request->validate($news->rules(), [], $news->attributeNames());
-
        $request->validated();
-
-     //   $this->validate($request, $request->rules());
 
         $url = null;
 
