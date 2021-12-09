@@ -49,7 +49,7 @@ Route::name('admin.')
         Route::post('/ajax', [AdminController::class, 'send']);
 
         Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
-        Route::get('/users/toggleAdmin/{user}', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
+        Route::post('/users/toggleAdmin', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
 
         Route::get('parser', [ParserController::class, 'index'])->name('parser');
 
@@ -70,7 +70,7 @@ Route::view('/about', 'about')->name('about');
 Route::get('/auth/vk', [LoginController::class, 'loginVK'])->name('vkLogin');
 Route::get('/auth/vk/response', [LoginController::class, 'responseVK'])->name('vkResponse');
 
- Auth::routes();
+Auth::routes();
 
 
 

@@ -15,10 +15,12 @@
                     <div class="card">
                         <div class="card-body">
                             <h5>{{ $user->name }}</h5>
-
-                            <a href="{{ route('admin.toggleAdmin', $user) }}" type="button" class="btn btn-outline-secondary">Назначить/Снять
-                                админа</a>
-
+                            <form method="POST" action="{{ route('admin.toggleAdmin') }}">
+                                @csrf
+                                <label for="toggleAdmin">Админ/не админ</label>
+                                <input hidden type="text" name="toggleAdmin" value="{{ $user->id }}">
+                                <input class="btn btn-outline-primary" type="submit" value="Назначить">
+                            </form>
                                 @if ($user->is_admin == true)
                                     Админ
                                 @else
