@@ -14,7 +14,7 @@
                             <h2>{{ $news->title }}</h2>
                             <div class="card-img" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg')}});  width: 300px"></div>
                             @if (!$news->isPrivate || Auth::id())
-                                <p>{{ $news->text }}</p>
+                                <p>{!! $news->text !!}</p>
                             @else
                                 Заререгестрируйтесь для просмотра
                             @endif
