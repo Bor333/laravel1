@@ -1,6 +1,11 @@
 .card-img {
     height: 150px;
     background-position: center center;
-    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-img-big {
+    height: 350px;
+    background-position: center center;
     background-repeat: no-repeat;
 }

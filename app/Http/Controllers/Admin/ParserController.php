@@ -14,6 +14,7 @@ class ParserController extends Controller
     public function index(XMLParserService $parserService)
     {
         $rssLinks = [
+            'https://news.yandex.ru/army.rss',
             'https://news.yandex.ru/auto.rss',
             'https://lenta.ru/rss/news',
             ];

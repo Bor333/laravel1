@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Support\Str;
 use Orchestra\Parser\Xml\Facade as XmlParser;
 
 class XMLParserService
@@ -23,11 +24,11 @@ class XMLParserService
 
 
         foreach ($data['news'] as $news) {
-           $category = ($news['category']) ?: 'Прочее';
+           $categoryName = ($news['category']) ?: $data['title'];
 
-            Category::query()->firstOrCreate([
-                'title' =>  $category,
-                'slug' => (str_slug($news['category'])) ?: 'other'
+            $category = Category::query()->firstOrCreate([
+                'title' =>  $categoryName,
+                'slug' => Str::slug($categoryName)
             ]);
 
             News::query()->firstOrCreate([
@@ -35,12 +36,12 @@ class XMLParserService
                 'text' => $news['description'],
                 'isPrivate' => 0,
                 'image' => $news['enclosure::url'],
-                'category_id' => Category::query()->where('title', $category)->value('id'),
+                'category_id' => $category->id,
             ]);
 
 
         }
-        return redirect()->route('news.index')->withSuccess('Новости добавлены!');
+  //     return redirect()->route('news.index')->withSuccess('Новости добавлены!');
     }
 
 
