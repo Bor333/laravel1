@@ -15,13 +15,13 @@ class UserController extends Controller
         return view('admin.users', ['users' => $users]);
     }
 
-    public function toggleAdmin(Request $request, User $user)
+    public function toggleAdmin(Request $request)
     {
         $request->flash();
-        $id = $request->except('_token');
+        $user_id = $request->except('_token');
 
-        if ($id != Auth::id()) {
-            $user = User::query()->where('id', $id)->first();
+        if ($user_id != Auth::id()) {
+            $user = User::query()->where('id', $user_id)->first();
 
             $user->is_admin = !$user->is_admin;
             $user->save();
