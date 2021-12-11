@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+use App\Jobs\NewsParsing;
 use App\Models\News;
 use App\Services\XMLParserService;
 
@@ -22,7 +23,8 @@ class ParserController extends Controller
         $start = microtime(true);
 
         foreach ($rssLinks as $link) {
-            $parserService->saveNews($link);
+            NewsParsing::dispatch($link);
+           // $parserService->saveNews($link);
         }
 
         $end = microtime(true);
