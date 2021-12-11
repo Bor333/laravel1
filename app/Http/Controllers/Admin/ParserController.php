@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Jobs\NewsParsing;
 use App\Models\News;
+use App\Models\Resources;
 use App\Services\XMLParserService;
 
 
@@ -14,11 +15,14 @@ class ParserController extends Controller
 {
     public function index(XMLParserService $parserService)
     {
+
         $rssLinks = [
             'https://news.yandex.ru/army.rss',
             'https://news.yandex.ru/auto.rss',
             'https://lenta.ru/rss/news',
             ];
+
+      //  $rssLinks = Resources::all();
 
         $start = microtime(true);
 
