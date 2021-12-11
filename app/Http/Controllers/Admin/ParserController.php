@@ -24,7 +24,7 @@ class ParserController extends Controller
 
         foreach ($rssLinks as $link) {
             NewsParsing::dispatch($link);
-           // $parserService->saveNews($link);
+          //  $parserService->saveNews($link);
         }
 
         $end = microtime(true);
