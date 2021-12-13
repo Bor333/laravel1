@@ -16,19 +16,16 @@ class ParserController extends Controller
     public function index(XMLParserService $parserService)
     {
 
-        $rssLinks = [
-            'https://news.yandex.ru/army.rss',
-            'https://news.yandex.ru/auto.rss',
-            'https://lenta.ru/rss/news',
-            ];
-
-      //  $rssLinks = Resources::all();
+        $rssLinks = [];
+        foreach (Resources::all() as $item) {
+            $rssLinks[] = $item->rssLink;
+        }
 
         $start = microtime(true);
 
         foreach ($rssLinks as $link) {
             NewsParsing::dispatch($link);
-          //  $parserService->saveNews($link);
+            //  $parserService->saveNews($link);
         }
 
         $end = microtime(true);

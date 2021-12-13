@@ -20,6 +20,10 @@
 </li>
 @endauth()
 
+<li class="nav-item {{ request()->routeIs('vue')?'active':'' }}">
+    <a class="nav-link" href="{{ route('vue') }}">Vue</a>
+</li>
+
 @auth
     @if (Auth::user()->is_admin)
         <li class="nav-item {{ request()->routeIs('admin.index')?'active':'' }}">
