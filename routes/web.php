@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 
+use App\Http\Controllers\Admin\ResourcesController;
 
 use App\Http\Controllers\ProfileController;
 
@@ -51,7 +52,9 @@ Route::name('admin.')
         Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
         Route::post('/users/toggleAdmin', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
 
-        Route::get('parser', [ParserController::class, 'index'])->name('parser');
+        Route::get('/parser', [ParserController::class, 'index'])->name('parser');
+
+        Route::resource('/resources', ResourcesController::class)->except('show', 'update', 'edit');
 
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
@@ -59,6 +62,7 @@ Route::name('admin.')
 
         Route::resource('/news', AdminNewsController::class)->except('show');
         Route::resource('/categories', AdminCategoryController::class)->except('show');
+
 
     });
 

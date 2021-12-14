@@ -21,9 +21,9 @@ class ResourcesSeeder extends Seeder
     private function getData()
     {
         $data = [
+            ['rssLink' =>'https://lenta.ru/rss/news'],
             ['rssLink' => 'https://news.yandex.ru/army.rss'],
             ['rssLink' =>'https://news.yandex.ru/auto.rss'],
-            ['rssLink' =>'https://lenta.ru/rss/news'],
         ];
         return $data;
     }

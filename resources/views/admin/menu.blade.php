@@ -20,7 +20,11 @@
 </li>
 
 <li class="nav-item {{ request()->routeIs('admin.updateUsers')?'active':'' }}">
-    <a class="nav-link"  href="{{ route('admin.updateUsers') }}">Users</a>
+    <a class="nav-link"  href="{{ route('admin.updateUsers') }}">Пользователи</a>
+</li>
+
+<li class="nav-item {{ request()->routeIs('admin.resources.index')?'active':'' }}">
+    <a class="nav-link"  href="{{ route('admin.resources.index') }}">Ресурсы</a>
 </li>
 
 <li class="nav-item {{ request()->routeIs('admin.parser')?'active':'' }}">
