@@ -58,7 +58,7 @@ class NewsController extends Controller
         $news->image = $url;
 
 
-        $news->fill($request->all())->save();
+        $news->fill($request->except('image'))->save();
 
 
         return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');

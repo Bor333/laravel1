@@ -73,7 +73,6 @@ Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'is_admin']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-Route::view('/about', 'about')->name('about');
 
 Route::get('/auth/vk', [LoginController::class, 'loginVK'])->name('vkLogin');
 Route::get('/auth/vk/response', [LoginController::class, 'responseVK'])->name('vkResponse');
