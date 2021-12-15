@@ -10,27 +10,28 @@
             <div class="col-md-12">
                 <h3>CRUD ресурсов</h3>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-group">
-                            @forelse($resources as $resource)
+                <div class="form-group">
+                    @forelse($resources as $resource)
+                        <div class="card">
+                            <div class="card-body">
                                 <p>{{ $resource->rssLink }}</p>
                                 <form action="{{ route('admin.resources.destroy',  $resource) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">delete</button>
                                 </form>
-                            @empty
-                                <p>Нет ресурсов</p>
-                            @endforelse
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <a class="btn btn-primary" href="{{ route('admin.resources.create') }}">Новый
-                                ресурс</a>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Нет ресурсов</p>
+                    @endforelse
                 </div>
+
+                <div class="form-group">
+                    <a class="btn btn-primary" href="{{ route('admin.resources.create') }}">Новый
+                        ресурс</a>
+                </div>
+
             </div>
         </div>
     </div>

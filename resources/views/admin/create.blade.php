@@ -10,6 +10,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <h2>Новая новость</h2>
                 <div class="card">
                     <div class="card-body">
 

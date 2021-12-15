@@ -16,6 +16,9 @@ use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
 
+use UniSharp\LaravelFilemanager\Lfm;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +50,7 @@ Route::name('admin.')
     ->middleware(['auth', 'is_admin'])
     ->group(function () {
 
+        Route::get('/', [AdminController::class, 'index'])->name('index');
 
         Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
         Route::post('/users/toggleAdmin', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');
@@ -55,14 +59,8 @@ Route::name('admin.')
 
         Route::resource('/resources', ResourcesController::class)->except('show', 'update', 'edit');
 
-        Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
-        Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-
         Route::resource('/news', AdminNewsController::class)->except('show');
         Route::resource('/categories', AdminCategoryController::class)->except('show');
-
-
     });
 
 
@@ -70,12 +68,13 @@ Route::match(['get', 'post'], 'profile', [ProfileController::class, 'update'])
     ->middleware('auth')
     ->name('updateProfile');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'is_admin']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
-
 Route::get('/auth/vk', [LoginController::class, 'loginVK'])->name('vkLogin');
 Route::get('/auth/vk/response', [LoginController::class, 'responseVK'])->name('vkResponse');
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'is_admin']], function () {
+    Lfm::routes();
+});
 
 
 Auth::routes();

@@ -14,21 +14,20 @@
                 @forelse($users as $user)
                     <div class="card">
                         <div class="card-body">
-                            <h5>{{ $user->name }}</h5>
+                            {{ $user->name }} -
+                            @if ($user->is_admin == true)
+                                админ
+                            @else
+                                не админ
+                            @endif
                             <div class="form-group">
                                 <form method="POST" action="{{ route('admin.toggleAdmin') }}">
                                     @csrf
-                                    <label for="isAdmin">Админ/Не админ</label>
+                                    <label for="isAdmin"></label>
                                     <input hidden type="text" name="isAdmin" value="{{ $user->id }}">
-                                    <input class="btn btn-outline-primary" type="submit" value="Снять/Назначить">
+                                    <input class="btn btn-secondary" type="submit" value="Снять/Назначить">
                                 </form>
-                                <div class="form-group">
-                                    @if ($user->is_admin == true)
-                                        Админ
-                                    @else
-                                        Не админ
-                                    @endif
-                                </div>
+
 
                             </div>
 

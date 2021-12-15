@@ -21,18 +21,11 @@ class ParserController extends Controller
             $rssLinks[] = $item->rssLink;
         }
 
-        $start = microtime(true);
-
         foreach ($rssLinks as $link) {
             NewsParsing::dispatch($link);
-            //  $parserService->saveNews($link);
         }
 
-        $end = microtime(true);
-
-        dump($end - $start);
-
-        return view('admin.index', [
+        return view('admin.news', [
             'news' => News::all()
         ]);
 
