@@ -12,7 +12,7 @@
                     <div class="card-body">
                         @if ($news)
                             <h2>{{ $news->title }}</h2>
-                            <div class="card-img-big" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg')}});"></div>
+                            <div class="card-img-big" style="background-image: url({{ $news->image ?? asset('storage/img/default.jpeg') }});"></div>
                             @if (!$news->isPrivate || Auth::id())
                                 <p>{{ $news->text }}</p>
                             @else

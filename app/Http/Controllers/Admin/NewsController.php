@@ -29,25 +29,6 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request, News $news)
     {
-       $request->validated();
-
-        $url = null;
-
-        if ($request->file('image')) {
-            $path = Storage::putFile('public/img', $request->file('image'));
-            $url = Storage::url($path);
-        }
-
-
-        $news->image = $url;
-        $news->fill($request->all())->save();
-
-        return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
-    }
-
-    public function update (NewsRequest $request, News $news)
-    {
-      //  $request->flash();
         $request->validated();
 
         $url = null;
@@ -57,20 +38,39 @@ class NewsController extends Controller
             $url = Storage::url($path);
         }
 
-
         $news->image = $url;
         $news->fill($request->all())->save();
+
+        return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
+    }
+
+    public function update(NewsRequest $request, News $news)
+    {
+        $request->validated();
+        $url = null;
+
+        if ($request->file('image')) {
+            $path = Storage::putFile('public/img', $request->file('image'));
+            $url = Storage::url($path);
+        }
+
+
+        $news->image = $url;
+
+
+        $news->fill($request->all())->save();
+
 
         return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
     }
 
-    public function destroy (News $news)
+    public function destroy(News $news)
     {
         $news->delete();
         return redirect()->route('admin.news.index')->with('success', 'Новость удалена');
     }
 
-    public function edit (News $news)
+    public function edit(News $news)
     {
         return view('admin.create', [
             'news' => $news,
