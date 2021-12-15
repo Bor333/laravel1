@@ -46,8 +46,7 @@ Route::name('admin.')
     ->prefix('admin')
     ->middleware(['auth', 'is_admin'])
     ->group(function () {
-        Route::get('/ajax', [AdminController::class, 'ajax'])->name('ajax');
-        Route::post('/ajax', [AdminController::class, 'send']);
+
 
         Route::get('/users', [UserController::class, 'index'])->name('updateUsers');
         Route::post('/users/toggleAdmin', [UserController::class, 'toggleAdmin'])->name('toggleAdmin');

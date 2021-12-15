@@ -31,9 +31,5 @@
     <a class="nav-link"  href="{{ route('admin.parser') }}">Парсер</a>
 </li>
 
-<li class="nav-item {{ request()->routeIs('admin.ajax')?'active':'' }}">
-    <a class="nav-link"  href="{{ route('admin.ajax') }}">Ajax Test</a>
-</li>
-
 
 <br>
