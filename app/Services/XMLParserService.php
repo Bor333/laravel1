@@ -41,7 +41,7 @@ class XMLParserService
 
 
         }
-  //     return redirect()->route('news.index')->withSuccess('Новости добавлены!');
+
     }
 
 

@@ -24,7 +24,7 @@ class ParserController extends Controller
         foreach ($rssLinks as $link) {
             NewsParsing::dispatch($link);
         }
-        return redirect()->route('admin.news.index')->withSuccess('Новости добавлены!');
+        return redirect()->route('admin.news.index');
 
     }
 
