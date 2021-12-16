@@ -21,9 +21,19 @@ class ResourcesSeeder extends Seeder
     private function getData()
     {
         $data = [
-            ['rssLink' =>'https://lenta.ru/rss/news'],
+            ['rssLink' => 'https://news.mail.ru/rss'],
+            ['rssLink' => 'https://ngs.ru/rss'],
+            ['rssLink' => 'https://iz.ru/xml/rss/all.xml'],
+            ['rssLink' => 'https://azcir.org/feed/'],
+            ['rssLink' => 'https://russian.rt.com/rss'],
+            ['rssLink' => 'http://government.ru/news/rss/'],
+            ['rssLink' => 'https://regnum.ru/rss/'],
+            ['rssLink' => 'https://www.ng.ru/rss/'],
+            ['rssLink' => 'https://lenta.ru/rss/news'],
+            ['rssLink' => 'https://vot-tak.tv/feed/'],
+            ['rssLink' => 'https://xn--b1aew.xn--p1ai/news/rss'],
             ['rssLink' => 'https://news.yandex.ru/army.rss'],
-            ['rssLink' =>'https://news.yandex.ru/auto.rss'],
+            ['rssLink' => 'https://news.yandex.ru/auto.rss'],
         ];
         return $data;
     }
