@@ -11,7 +11,8 @@
                 <h2>Главная</h2>
                 <div class="card">
                     <div class="card-body">
-                        <p>Добро пожаловать, {{ Auth::user()->name }}!</p>
+                        @guest<p>Добро пожаловать, в агрегатор новостей!</p>@endguest
+                        @auth<p>Добро пожаловать, {{ Auth::user()->name }}!</p>@endauth
                     </div>
 
                 </div>
