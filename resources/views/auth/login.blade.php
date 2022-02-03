@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Логин')
+
+@section('menu')
+    @include('admin.menu')
+@endsection
+
 @section('content')
     <br>
     <div class="container">
@@ -19,7 +25,7 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                           value="{{ old('email') ?? __('admin@admin.ru') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +42,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required autocomplete="current-password">
+                                           required autocomplete="current-password" value="{{ old('password') ?? __('123') }}">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -56,6 +62,9 @@
                                             {{ __('Remember Me') }}
                                         </label>
                                     </div>
+
+                                    <a href="{{ route('vkLogin') }}"><img src="vk.png" alt="" width="40"></a>
+
                                 </div>
                             </div>
 

@@ -18,6 +18,19 @@ class IndexController extends Controller
         return view('admin.index');
     }
 
+    public function send(Request $request)
+    {
+
+        return response()->json([
+            'id' => $request->id,
+            'status' => 'ok'
+        ]);
+    }
+
+    public function ajax() {
+        return view('admin.ajax');
+    }
+
     public function test1(News $news)
     {
         return response()->json($news->getNews())

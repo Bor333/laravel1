@@ -19,12 +19,17 @@
     <a class="nav-link"  href="{{ route('admin.categories.create') }}">Добавить категорию</a>
 </li>
 
-<li class="nav-item {{ request()->routeIs('admin.test1')?'active':'' }}">
-    <a class="nav-link"  href="{{ route('admin.test1') }}">download json</a>
+<li class="nav-item {{ request()->routeIs('admin.updateUsers')?'active':'' }}">
+    <a class="nav-link"  href="{{ route('admin.updateUsers') }}">Пользователи</a>
 </li>
 
-<li class="nav-item {{ request()->routeIs('admin.test2')?'active':'' }}">
-    <a class="nav-link"  href="{{ route('admin.test2') }}">download image</a>
+<li class="nav-item {{ request()->routeIs('admin.resources.index')?'active':'' }}">
+    <a class="nav-link"  href="{{ route('admin.resources.index') }}">Ресурсы</a>
 </li>
+
+<li class="nav-item {{ request()->routeIs('admin.parser')?'active':'' }}">
+    <a class="nav-link"  href="{{ route('admin.parser') }}">Парсер</a>
+</li>
+
 
 <br>

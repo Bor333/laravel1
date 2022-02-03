@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class CategoryController extends Controller
 {
@@ -26,19 +26,18 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(Request $request, Category $category)
+    public function store(CategoryRequest $request, Category $category)
     {
-        $request->flash();
+        $request->validated();
 
         $category->fill($request->all())->save();
 
         return redirect()->route('admin.categories.index', $category->id)->with('success', 'Категория добавлена');
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $request->flash();
-
+        $request->validated();
 
         $category->fill($request->all())->save();
 
@@ -51,7 +50,7 @@ class CategoryController extends Controller
             $category->delete();
             return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
         } else {
-            return redirect()->route('news.category.show', $category->slug)->with('danger', 'Категория не пуста!');
+            return redirect()->route('news.category.show', $category->slug)->with('error', 'Категория не пуста!');
         }
     }
 

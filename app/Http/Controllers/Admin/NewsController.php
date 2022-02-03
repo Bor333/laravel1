@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -26,9 +27,9 @@ class NewsController extends Controller
         ]);
     }
 
-    public function store(Request $request, News $news)
+    public function store(NewsRequest $request, News $news)
     {
-        $request->flash();
+        $request->validated();
 
         $url = null;
 
@@ -43,10 +44,9 @@ class NewsController extends Controller
         return redirect()->route('news.show', $news->id)->with('success', 'Новость добавлена');
     }
 
-    public function update(Request $request, News $news)
+    public function update(NewsRequest $request, News $news)
     {
-        $request->flash();
-
+        $request->validated();
         $url = null;
 
         if ($request->file('image')) {
@@ -54,10 +54,12 @@ class NewsController extends Controller
             $url = Storage::url($path);
         }
 
-        //$news->isPrivate = isset($request->isPrivate);
 
         $news->image = $url;
-        $news->fill($request->all())->save();
+
+
+        $news->fill($request->except('image'))->save();
+
 
         return redirect()->route('news.show', $news->id)->with('success', 'Новость изменена');
     }
